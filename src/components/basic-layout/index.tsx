@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { makeStyles } from "@material-ui/styles";
+import UserAvatar from "./components/user-avatar";
 
 const { Header, Content, Footer, Sider } = Layout;
 const useStyles = makeStyles({
   trigger: {
-    lineHeight: "4rem",
+    lineHeight: "48px",
   },
 });
 export interface BasicLayoutProps {}
@@ -17,46 +22,71 @@ const BasicLayout: React.FunctionComponent<BasicLayoutProps> = (props) => {
     setCollapsed(!collapsed);
   };
   return (
-    <Layout>
+    <Layout className="basic-layout">
       <Sider
         breakpoint="lg"
-        collapsedWidth="0"
+        collapsedWidth="48"
         trigger={null}
         collapsed={collapsed}
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapse, type) => {
-          console.log(collapse, type);
-        }}
         className="h-screen"
+        width={208}
       >
-        <div className="h-8 bg-gray-700 m-4" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
-          <Menu.Item key="4">nav 4</Menu.Item>
+        <div className="h-8 my-4  flex  justify-center whitespace-no-wrap overflow-hidden">
+          <img
+            className="h-8"
+            src={`${process.env.PUBLIC_URL}/images/logo.svg`}
+            alt="logo"
+          />
+          {collapsed ? null : (
+            <h1
+              className={`text-white text-lg font-bold ml-3 transition-opacity delay-1000 `}
+            >
+              Ant Design Pro
+            </h1>
+          )}
+        </div>
+        <Menu
+          collapsedWidth={0}
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["4"]}
+          className="w-full"
+        >
+          <Menu.Item key="1" icon={<UserOutlined />}>
+            nav 1
+          </Menu.Item>
+          <Menu.Item key="2" icon={<UserOutlined />}>
+            nav 2
+          </Menu.Item>
+          <Menu.Item key="3" icon={<UserOutlined />}>
+            nav 3
+          </Menu.Item>
+          <Menu.Item key="4" icon={<UserOutlined />}>
+            nav 4
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout>
-        <Header className="bg-white " style={{ padding: 0 }}>
+        <Header
+          className="bg-white h-12 flex items-center justify-between"
+          style={{ padding: 0 }}
+        >
           {React.createElement(
             collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
             {
-              className: `${classes.trigger} ml-4 text-lg cursor-pointer transition-colors duration-300 hover:text-green-500`,
+              className: `${classes.trigger} h-12 ml-4 mt-0 text-lg cursor-pointer transition-colors  hover:text-green-500`,
               onClick: toggle,
             }
           )}
+          <div className="mr-4">
+            <UserAvatar src="" name="" />
+          </div>
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div className="bg-white" style={{ padding: 24, minHeight: 360 }}>
             content
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
       </Layout>
     </Layout>
   );
