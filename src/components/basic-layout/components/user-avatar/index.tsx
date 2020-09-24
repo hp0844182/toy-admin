@@ -10,7 +10,7 @@ const UserAvatar: React.FunctionComponent<UserAvatarProps> = (props) => {
   const menu = (
     <Menu>
       <Menu.Item>
-        <div className="flex items-center">
+        <div className="flex items-center text-gray-100">
           <LogoutOutlined className="pr-1" /> 退出登陆
         </div>
       </Menu.Item>
@@ -19,12 +19,12 @@ const UserAvatar: React.FunctionComponent<UserAvatarProps> = (props) => {
 
   return (
     <Dropdown overlay={menu}>
-      <div className="flex items-center h-12 px-4 cursor-pointer hover:bg-gray-100">
+      <div className="flex items-center h-12 px-4 cursor-pointer hover:bg-gray-200 ">
         <Avatar
           size={24}
           src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
         />
-        <span className="ml-1 inline-block">王麻子</span>
+        <span className="ml-1 inline-block text-blue-100">王麻子</span>
       </div>
     </Dropdown>
   );

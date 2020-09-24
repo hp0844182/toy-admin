@@ -1,3 +1,4 @@
 # 配置文件
 config-overrides.js
 tailwind.config.js
+/config
