@@ -7,8 +7,9 @@ import {
 } from "@ant-design/icons";
 import { makeStyles } from "@material-ui/styles";
 import UserAvatar from "./components/user-avatar";
+import Global from "./components/global";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 const useStyles = makeStyles({
   trigger: {
     lineHeight: "48px",
@@ -41,7 +42,7 @@ const BasicLayout: React.FunctionComponent<BasicLayoutProps> = (props) => {
             <h1
               className={`text-white text-lg font-bold ml-3 transition-opacity delay-1000 `}
             >
-              Ant Design Pro
+              Toy Admin
             </h1>
           )}
         </div>
@@ -78,8 +79,9 @@ const BasicLayout: React.FunctionComponent<BasicLayoutProps> = (props) => {
               onClick: toggle,
             }
           )}
-          <div className="mr-4">
+          <div className="mr-4 flex items-center">
             <UserAvatar src="" name="" />
+            <Global />
           </div>
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>

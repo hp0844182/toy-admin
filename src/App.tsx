@@ -5,8 +5,13 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
 import BasicLayout from "src/components/basic-layout";
+import { config } from "src/global";
 
+// passes i18n down to react-i18next
+i18n.use(initReactI18next).init(config);
 export interface AppProps {
   [propName: string]: any;
 }
