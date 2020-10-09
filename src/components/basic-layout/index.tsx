@@ -6,6 +6,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { makeStyles } from "@material-ui/styles";
+import RouteTabs from "src/components/route-tabs";
 import UserAvatar from "./components/user-avatar";
 import Global from "./components/global";
 
@@ -84,6 +85,7 @@ const BasicLayout: React.FunctionComponent<BasicLayoutProps> = (props) => {
             <Global />
           </div>
         </Header>
+        <RouteTabs />
         <Content style={{ margin: "24px 16px 0" }}>
           <div className="bg-white" style={{ padding: 24, minHeight: 360 }}>
             content
