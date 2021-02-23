@@ -1,4 +1,6 @@
-export interface IAlertSetting {
+import { IBaseSetting } from "src/hooks/useElementCssClass";
+
+export interface IAlertSetting extends IBaseSetting {
   classes: {
     wrapper: string;
     body: string;
