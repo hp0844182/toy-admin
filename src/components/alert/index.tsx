@@ -4,21 +4,52 @@ import { IAlertSetting } from "./type";
 
 export interface AlertProps {
   setting?: IAlertSetting;
-  tagName: keyof ReactHTML;
-  bodyTagName: keyof ReactHTML;
-  closeble: boolean;
-  show: boolean;
-  timeout: number;
-  closeIcon: React.ReactElement;
+  closeble?: boolean;
+  timeout?: number;
+  closeIcon?: React.ReactElement;
 }
 
+const defaultSettng: IAlertSetting = {
+  fixedClasses: {
+    wrapper:
+      "relative flex items-center p-16 border-l-4 rounded shadow-sm text-16",
+    body: "flex-grow",
+    close:
+      "absolute relative flex items-center justify-center ml-16 flex-shrink-0 w-16 h-16 transition duration-100 ease-in-out rounded  focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-opacity-50",
+    closeIcon: "fill-current h-16 w-16",
+  },
+  classes: {
+    wrapper: "bg-blue-50 border-blue-500",
+    body: "text-blue-700",
+    close: "text-blue-500 hover:bg-blue-200",
+  },
+  variants: {
+    danger: {
+      wrapper: "bg-red-50 border-red-500",
+      body: "text-red-700",
+      close: "text-red-500 hover:bg-red-200",
+    },
+    success: {
+      wrapper: "bg-green-50 border-green-500",
+      body: "text-green-700",
+      close: "text-green-500 hover:bg-green-200",
+    },
+  },
+};
+
 export const Alert: React.FunctionComponent<AlertProps> = (props) => {
-  const { setting, show, closeble, children, closeIcon } = props;
-  const [localShow, setShow] = useState(show);
-  const { getElementCssClass } = useElementCssClass(props);
+  const { closeble, children, closeIcon } = props;
+  const [localShow, setShow] = useState(true);
+  const { getElementCssClass } = useElementCssClass({
+    ...props,
+    setting: defaultSettng,
+  });
   const hide = () => {
     setShow(false);
   };
+  if (!localShow) {
+    return null;
+  }
   return (
     <div className={getElementCssClass("wrapper")}>
       <div>{children}</div>

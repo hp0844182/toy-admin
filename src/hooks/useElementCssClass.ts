@@ -40,11 +40,12 @@ export function useElementCssClass<T extends IBaseProps>(props: T) {
 
     // exit variant
     if (variants) {
-      const variantsClass = get(
-        setting?.variants,
-        `${variants}.${elementName}`
-      );
+      const variantsClass =
+        get(setting?.variants, `${variants}.${elementName}`) ||
+        get(setting?.variants, `default.${elementName}`);
+
       classes += ` ${variantsClass}`;
+      console.log(variantsClass);
     }
     return classes;
   }

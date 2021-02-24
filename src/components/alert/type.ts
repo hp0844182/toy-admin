@@ -1,7 +1,7 @@
 import { IBaseSetting } from "src/hooks/useElementCssClass";
 
 export interface IAlertSetting extends IBaseSetting {
-  classes: {
+  fixedClasses: {
     wrapper: string;
     body: string;
     close: string;
