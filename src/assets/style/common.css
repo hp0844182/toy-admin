@@ -1,17 +1,5 @@
-@tailwind base;
+@import "tailwindcss/base";
 
-@tailwind components;
+@import "tailwindcss/components";
 
-@tailwind utilities;
-
-/* antd-样式重置 start */
-.basic-layout .ant-menu-inline-collapsed .ant-menu-item {
-  width: 48px;
-  padding: 0 16px!important;
-}
-.ant-layout-sider{
-  transition: none;
-}
-.ant-menu-item .anticon + span, .ant-menu-submenu-title .anticon + span{
-  transition: none;
-}
+@import "tailwindcss/utilities";

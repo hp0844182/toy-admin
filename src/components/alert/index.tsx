@@ -19,18 +19,18 @@ const defaultSettng: IAlertSetting = {
     closeIcon: "fill-current h-16 w-16",
   },
   classes: {
-    wrapper: "bg-blue-50 border-blue-500",
+    wrapper: "bg-blue-100 border-blue-500",
     body: "text-blue-700",
     close: "text-blue-500 hover:bg-blue-200",
   },
   variants: {
     danger: {
-      wrapper: "bg-red-50 border-red-500",
+      wrapper: "bg-red-100 border-red-500",
       body: "text-red-700",
       close: "text-red-500 hover:bg-red-200",
     },
     success: {
-      wrapper: "bg-green-50 border-green-500",
+      wrapper: "bg-green-100 border-green-500",
       body: "text-green-700",
       close: "text-green-500 hover:bg-green-200",
     },
@@ -52,7 +52,7 @@ export const Alert: React.FunctionComponent<AlertProps> = (props) => {
   }
   return (
     <div className={getElementCssClass("wrapper")}>
-      <div>{children}</div>
+      <div className={getElementCssClass("body")}>{children}</div>
       {closeble ? (
         <button
           onClick={hide}
